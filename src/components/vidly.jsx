@@ -31,13 +31,14 @@ export default class Movies extends Component {
   getTable() {
     if (this.state.movies && this.state.movies.length) {
       return (
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Genre</th>
               <th scope="col">Stock</th>
               <th scope="col">Rate</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +49,10 @@ export default class Movies extends Component {
                 <td>{m.numberInStock}</td>
                 <td>{m.dailyRentalRate}</td>
                 <td>
-                  <button onClick={() => this.handleMovieDeletion(m._id)}>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => this.handleMovieDeletion(m._id)}
+                  >
                     Delete
                   </button>
                 </td>
@@ -65,5 +69,3 @@ export default class Movies extends Component {
     this.setState({ movies: getMovies() });
   }
 }
-
-// export default Vidly;
