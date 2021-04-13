@@ -4,11 +4,12 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
-import Movies from "./components/vidly";
+// import Movies from "./components/vidly";
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Movies />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
