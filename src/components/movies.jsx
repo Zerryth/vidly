@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import { getGenres } from "../services/fakeGenreService";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
 import { paginate } from "../utils/paginate";
+import ListGroup from "./genreFilter";
 
 export default class Movies extends Component {
   constructor() {
     super();
     this.state = {
-      movies: getMovies(),
+      movies: [],
       currentPage: 1,
       pageSize: 4,
+      genres: [],
+      currentGenre: "None",
     };
+  }
+
+  componentDidMount() {
+    this.setState({ movies: getMovies(), genres: getGenres() });
   }
 
   handleLike = (movie) => {
@@ -31,9 +39,22 @@ export default class Movies extends Component {
     this.setState({ currentPage: page });
   };
 
+  handleItemSelection = (item) => {
+    this.setState({ currentGenre: item });
+  };
+
   getTable = () => {
-    const { pageSize, currentPage, movies: allMovies } = this.state;
-    const movies = paginate(allMovies, currentPage, pageSize);
+    const {
+      pageSize,
+      currentPage,
+      movies: allMovies,
+      currentGenre,
+    } = this.state;
+    let movies = paginate(allMovies, currentPage, pageSize);
+
+    if (currentGenre !== "None") {
+      movies = movies.filter((movie) => movie.genre.name === currentGenre.name);
+    }
 
     return (
       <table className="table">
@@ -74,21 +95,31 @@ export default class Movies extends Component {
 
   render() {
     const { length: moviesCount } = this.state.movies;
-    const { pageSize, currentPage } = this.state;
+    const { pageSize, currentPage, currentGenre, genres } = this.state;
+    console.log("currentGenre in render", currentGenre);
 
     if (moviesCount === 0) return <p>There are no movies in the database.</p>;
 
     return (
-      <React.Fragment>
-        <p>Showing {moviesCount} movies in the database.</p>
-        {this.getTable()}
-        <Pagination
-          itemsCount={moviesCount}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={this.handlePageChange}
-        />
-      </React.Fragment>
+      <div className="row">
+        <div className="col-3">
+          <ListGroup
+            items={genres}
+            currentGenre={currentGenre.name}
+            onItemSelection={this.handleItemSelection}
+          />
+        </div>
+        <div className="col">
+          <p>Showing {moviesCount} movies in the database.</p>
+          {this.getTable()}
+          <Pagination
+            itemsCount={moviesCount}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={this.handlePageChange}
+          />
+        </div>
+      </div>
     );
   }
 }
