@@ -3,17 +3,17 @@ import React from "react";
 const ListGroup = (props) => {
   const {
     items,
-    currentGenre,
+    selectedItem,
     textProperty,
     valueProperty,
     onItemSelection,
   } = props;
   return (
     <ul className="list-group">
-      <li className="list-group-item list-group-item-action">All Genres</li>
       {items.map((item) => {
         let classes = "list-group-item list-group-item-action";
-        if (currentGenre === item.name) classes += " active";
+        if (selectedItem === item) classes += " active";
+
         return (
           <li
             key={item[valueProperty]}
