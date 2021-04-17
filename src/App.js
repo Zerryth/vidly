@@ -2,7 +2,11 @@ import "./App.css";
 import { Component } from "react";
 import Movies from "./components/movies";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart as solidHeart,
+  faSortDown,
+  faSortUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHeart as unfilledHeart } from "@fortawesome/free-regular-svg-icons";
 
 class App extends Component {
@@ -15,6 +19,6 @@ class App extends Component {
   }
 }
 
-library.add(solidHeart, unfilledHeart);
+library.add(faSortUp, faSortDown, solidHeart, unfilledHeart);
 
 export default App;

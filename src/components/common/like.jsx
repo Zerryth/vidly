@@ -13,7 +13,7 @@ const Like = (props) => {
     <FontAwesomeIcon
       onClick={onClick}
       icon={[iconStyle, "heart"]}
-      style={{ cursor: "pointer" }}
+      className="clickable"
     />
   );
 };
