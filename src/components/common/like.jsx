@@ -1,8 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Like = (props) => {
-  const { liked, onClick } = props;
+const Like = ({ liked, onClick }) => {
   let iconStyle = "far";
 
   if (liked === true) {
