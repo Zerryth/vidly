@@ -15,6 +15,7 @@ import Customers from "./components/customers";
 import "./App.css";
 import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
+import RegistrationForm from "./components/registrationForm";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
         <NavBar />
         <div className="content">
           <Switch>
+            <Route path="/register" component={RegistrationForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/movies/:id" component={MovieForm} />
             <Route path="/movies" component={Movies} />
