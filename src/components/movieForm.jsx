@@ -6,7 +6,12 @@ import { getMovie, saveMovie } from "./../services/fakeMovieService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genreId: "", numberInStock: 0, dailyRentalRate: 0.0 },
+    data: {
+      title: "",
+      genreId: "",
+      numberInStock: "",
+      dailyRentalRate: "",
+    },
     genres: [],
     errors: {},
   };
@@ -14,14 +19,14 @@ class MovieForm extends Form {
   schema = {
     _id: Joi.string(),
     title: Joi.string().required().label("Title"),
-    genre: Joi.string().required().label("Genre"),
+    genreId: Joi.string().required().label("Genre"),
     numberInStock: Joi.number()
       .integer()
       .min(0)
       .max(100)
       .required()
       .label("Number in Stock"),
-    rate: Joi.number().precision(2).max(10).label("Daily Rental Rate"),
+    dailyRentalRate: Joi.number().min(0).max(10).label("Daily Rental Rate"),
   };
 
   componentDidMount() {
@@ -70,5 +75,3 @@ class MovieForm extends Form {
 }
 
 export default MovieForm;
-
-// onClick={() => history.push("/movies")}

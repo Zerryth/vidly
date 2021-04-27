@@ -10,9 +10,7 @@ class Form extends Component {
   };
 
   validate = () => {
-    const options = {
-      abortEarly: false,
-    };
+    const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
 
     if (!error) return null;
@@ -31,16 +29,6 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const errors = this.validate();
-    this.setState({ errors: errors || {} });
-    if (errors) return;
-
-    this.doSubmit();
-  };
-
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
@@ -49,7 +37,18 @@ class Form extends Component {
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
+
     this.setState({ data, errors });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
+    this.doSubmit();
   };
 
   renderInput(name, label, type = "text") {
