@@ -7,20 +7,23 @@ import {
   faSortDown,
   faSortUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer } from "react-toastify";
 import NavBar from "./components/common/navBar";
 import Movies from "./components/movies";
 import NotFound from "./components/notFound";
 import Rentals from "./components/rentals";
 import Customers from "./components/customers";
-import "./App.css";
 import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
 import RegistrationForm from "./components/registrationForm";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <main className="container">
+        <ToastContainer />
         <NavBar />
         <div className="content">
           <Switch>
