@@ -5,6 +5,8 @@ import { apiUrl } from "../config.json";
 const apiEndpoint = `${apiUrl}/auth`;
 const tokenKey = "token";
 
+http.setJwt(getJwt());
+
 export function getCurrentUser() {
   try {
     const jwt = localStorage.getItem(tokenKey);
