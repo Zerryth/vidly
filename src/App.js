@@ -8,6 +8,7 @@ import {
   faSortUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer } from "react-toastify";
+import jwtDecode from "jwt-decode";
 import NavBar from "./components/common/navBar";
 import Movies from "./components/movies";
 import NotFound from "./components/notFound";
@@ -23,14 +24,18 @@ class App extends Component {
   state = {};
 
   componentDidMount() {
-    const jwt = localStorage.getItem("token");
+    try {
+      const jwt = localStorage.getItem("token");
+      const user = jwtDecode(jwt);
+      this.setState({ user });
+    } catch (error) {}
   }
 
   render() {
     return (
       <main className="container">
         <ToastContainer />
-        <NavBar />
+        <NavBar user={this.state.user} />
         <div className="content">
           <Switch>
             <Route path="/register" component={RegistrationForm} />
