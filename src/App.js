@@ -20,6 +20,12 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 class App extends Component {
+  state = {};
+
+  componentDidMount() {
+    const jwt = localStorage.getItem("token");
+  }
+
   render() {
     return (
       <main className="container">
