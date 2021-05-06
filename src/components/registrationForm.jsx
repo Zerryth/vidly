@@ -16,7 +16,17 @@ class RegistrationForm extends Form {
   };
 
   doSubmit = async () => {
-    await userService.register(this.state.data);
+    try {
+      const response = await userService.register(this.state.data);
+      localStorage.setItem("token", response.headers["x-auth-token"]);
+      this.props.history.push("/");
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.username = error.response.data;
+        this.setState({ errors });
+      }
+    }
   };
 
   render() {
