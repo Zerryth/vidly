@@ -14,6 +14,10 @@ export function getCurrentUser() {
   }
 }
 
+export function getJwt() {
+  return localStorage.getItem(tokenKey);
+}
+
 export async function login(email, password) {
   const { data: jwt } = await http.post(apiEndpoint, { email, password });
   localStorage.setItem(tokenKey, jwt);
@@ -29,6 +33,7 @@ export function logout() {
 
 const auth = {
   getCurrentUser,
+  getJwt,
   login,
   loginWithJwt,
   logout,
