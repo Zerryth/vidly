@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndpoint = "/movies";
+const apiEndpoint = "https://guarded-fjord-70135.herokuapp.com/api/movies";
 
 function movieUrl(id) {
   return `${apiEndpoint}/${id}`;

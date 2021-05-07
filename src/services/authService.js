@@ -1,7 +1,7 @@
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
-const apiEndpoint = "/auth";
+const apiEndpoint = "https://guarded-fjord-70135.herokuapp.com/api/auth";
 const tokenKey = "token";
 
 http.setJwt(getJwt());
