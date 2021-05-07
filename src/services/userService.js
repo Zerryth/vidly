@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndpoint = "https://guarded-fjord-70135.herokuapp.com/api/users";
+const apiEndpoint = `${process.env.REACT_APP_API_ENDPOINT}/users`;
 
 export function register(user) {
   return http.post(apiEndpoint, {

@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndpoint = "https://guarded-fjord-70135.herokuapp.com/api/movies";
+const apiEndpoint = `${process.env.REACT_APP_API_ENDPOINT}/movies`;
 
 function movieUrl(id) {
   return `${apiEndpoint}/${id}`;
