@@ -103,6 +103,7 @@ export default class Movies extends Component {
       searchQuery,
       genres,
     } = this.state;
+    const { user } = this.props;
 
     if (moviesCount.length === 0)
       return <p>There are no movies in the database.</p>;
@@ -125,7 +126,7 @@ export default class Movies extends Component {
             aria-current="page"
             style={{ marginBottom: 20 }}
           >
-            <button className="btn btn-primary">New Movie</button>
+            {user && <button className="btn btn-primary">New Movie</button>}
           </Link>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
           <p>Showing {totalCount} movies in the database.</p>
