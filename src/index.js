@@ -8,8 +8,6 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import logger from "./services/logService";
 
-console.log(process.env);
-
 logger.init();
 
 ReactDOM.render(

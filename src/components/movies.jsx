@@ -94,7 +94,6 @@ export default class Movies extends Component {
   };
 
   render() {
-    const { length: moviesCount } = this.state.movies;
     const {
       pageSize,
       currentPage,
@@ -104,9 +103,6 @@ export default class Movies extends Component {
       genres,
     } = this.state;
     const { user } = this.props;
-
-    if (moviesCount.length === 0)
-      return <p>There are no movies in the database.</p>;
 
     const { totalCount, data: movies } = this.getPagedData();
 
