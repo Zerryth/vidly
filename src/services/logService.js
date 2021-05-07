@@ -1,12 +1,9 @@
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
-// import { config } from "config";
 
 function init() {
-  const sentryUrl = process.env.sentryUrl;
-  console.log("sentryUrl", sentryUrl);
   Sentry.init({
-    dsn: sentryUrl,
+    dsn: process.env.REACT_APP_SENTRY_URL,
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 1.0,
   });

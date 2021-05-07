@@ -6,6 +6,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import logger from "./services/logService";
+
+console.log(process.env);
+
+logger.init();
 
 ReactDOM.render(
   <React.StrictMode>
