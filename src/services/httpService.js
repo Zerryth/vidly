@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import logger from "./logService";
 
 axios.interceptors.response.use(null, (error) => {
-  console.log("response interceptor");
   const expectedError =
     error.response &&
     error.response.status >= 400 &&
